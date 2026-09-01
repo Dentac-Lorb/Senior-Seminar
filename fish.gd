@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	#material.set_shader_parameter("pos1", position)
 	#material.set_shader_parameter("pos2", get_parent().get_child(1).position)
 	#material.set_shader_parameter("pos2", get_parent().get_child(2).position)
+	
 	pass
 	
 	
