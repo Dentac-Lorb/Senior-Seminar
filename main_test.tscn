@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://0a2hoavfwmyr"]
+
+[ext_resource type="Script" uid="uid://busjmg405ge33" path="res://fish_proto.gd" id="1_57xna"]
+[ext_resource type="Script" uid="uid://cf1i8a6o6jrg4" path="res://fish.gd" id="2_3eqfy"]
+[ext_resource type="Shader" uid="uid://d23cwsnsa14ib" path="res://fish.gdshader" id="2_6pnmo"]
+[ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="4_1yv58"]
+[ext_resource type="Script" uid="uid://wukyq1suij25" path="res://rtjrthjrt.gd" id="4_pgddy"]
+[ext_resource type="Script" uid="uid://efdcrrd1c848" path="res://middle.gd" id="5_6lgnl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q5k5"]
+shader = ExtResource("2_6pnmo")
+shader_parameter/pos1 = Vector2(0, 0)
+shader_parameter/pos2 = Vector2(0, 0)
+shader_parameter/pos3 = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygoab"]
+shader = ExtResource("2_6pnmo")
+shader_parameter/pos1 = Vector2(0, 0)
+shader_parameter/pos2 = Vector2(0, 0)
+shader_parameter/pos3 = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4tek"]
+shader = ExtResource("2_6pnmo")
+shader_parameter/pos1 = Vector2(0, 0)
+shader_parameter/pos2 = Vector2(0, 0)
+shader_parameter/pos3 = Vector2(0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucdlj"]
+radius = 21.2132
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bscfj"]
+radius = 17.0294
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7abl"]
+
+[node name="Node2D" type="Node2D" unique_id=612815997]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1218151262]
+scale = Vector2(2.60938, 2.60938)
+texture = ExtResource("4_1yv58")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1518432739]
+position = Vector2(564, 315)
+script = ExtResource("1_57xna")
+metadata/rot1 = 0.0
+metadata/Rot2 = 0.0
+
+[node name="fish" type="Node2D" parent="." unique_id=1234425899]
+material = SubResource("ShaderMaterial_8q5k5")
+rotation = 0.00117801
+
+[node name="PinJoint2D" type="PinJoint2D" parent="fish" unique_id=960102166 node_paths=PackedStringArray("head")]
+rotation = 3.14159
+node_a = NodePath("../head")
+node_b = NodePath("../middle")
+script = ExtResource("4_pgddy")
+head = NodePath("../head")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="fish" unique_id=1729752134 node_paths=PackedStringArray("middle")]
+position = Vector2(-48, 0.0565414)
+node_a = NodePath("../middle")
+node_b = NodePath("../tail")
+script = ExtResource("5_6lgnl")
+middle = NodePath("../middle")
+
+[node name="head" type="CharacterBody2D" parent="fish" unique_id=1073741742 node_paths=PackedStringArray("middle", "tail")]
+material = SubResource("ShaderMaterial_ygoab")
+use_parent_material = true
+motion_mode = 1
+script = ExtResource("2_3eqfy")
+middle = NodePath("../middle")
+tail = NodePath("../tail")
+
+[node name="Sprite2D" type="Sprite2D" parent="fish/head" unique_id=1172547965]
+scale = Vector2(0.453125, 0.453125)
+texture = ExtResource("4_1yv58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fish/head" unique_id=660141118]
+z_index = 1
+material = SubResource("ShaderMaterial_s4tek")
+use_parent_material = true
+shape = SubResource("CircleShape2D_ucdlj")
+
+[node name="middle" type="RigidBody2D" parent="fish" unique_id=1684778512]
+use_parent_material = true
+position = Vector2(-48, 0.0565414)
+linear_damp = 5.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="fish/middle" unique_id=225674828]
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("4_1yv58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fish/middle" unique_id=300518033]
+use_parent_material = true
+shape = SubResource("CircleShape2D_bscfj")
+
+[node name="tail" type="RigidBody2D" parent="fish" unique_id=76888033]
+use_parent_material = true
+position = Vector2(-79.9988, 1.09424)
+linear_damp = 5.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish/tail" unique_id=1601348196]
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("4_1yv58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fish/tail" unique_id=2144862853]
+use_parent_material = true
+shape = SubResource("CircleShape2D_h7abl")
+
+[node name="Camera2D" type="Camera2D" parent="fish" unique_id=1584134145]
