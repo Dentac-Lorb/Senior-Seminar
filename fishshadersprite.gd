@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	var middlepos = middle.position + rect.size /2 
 	var tailpos = tail.position + rect.size /2 
 	var positions = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos]
-	var radii = [20, 28, 20, 17, 15]
+	var radii = [15, 20, 12, 10, 8]
 	#material.set_shader_parameter("pos1", headpos)
 	#material.set_shader_parameter("pos2", middlepos)
 	#material.set_shader_parameter("pos3", tailpos)
