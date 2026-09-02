@@ -7,7 +7,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	scale = camera.get_viewport_rect().size
+	#scale = camera.get_viewport_rect().size
 	pass # Replace with function body.
 
 
@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	var headpos = head.position + rect.size /2 
 	var middlepos = middle.position + rect.size /2 
 	var tailpos = tail.position + rect.size /2 
+	position = head.position
 	var positions = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos]
 	var radii = [15, 20, 12, 10, 8]
 	#material.set_shader_parameter("pos1", headpos)
