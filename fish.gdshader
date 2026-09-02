@@ -50,7 +50,9 @@ void fragment() {
 	//float min4 = smoothMin(min3, dst2a, smoothing);
 	float dist = smoothMinDist(FRAGCOORD);
 	float alpha = smoothstep(-2, 0, -dist);
-	COLOR = vec4(1,1,1,alpha);
+	float sqrtdist = sqrt(abs(dist));
+	float shade = smoothstep(0, 10, sqrtdist);
+	COLOR = vec4(shade,shade,shade,alpha);
 }
 
 //void light() {
