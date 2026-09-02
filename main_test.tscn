@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="4_1yv58"]
 [ext_resource type="Script" uid="uid://wukyq1suij25" path="res://rtjrthjrt.gd" id="4_pgddy"]
 [ext_resource type="Script" uid="uid://efdcrrd1c848" path="res://middle.gd" id="5_6lgnl"]
+[ext_resource type="Shader" uid="uid://0cqexweyhoje" path="res://water.gdshader" id="5_t8fg7"]
+[ext_resource type="Script" uid="uid://m6ok1xnn7bnp" path="res://watersprite.gd" id="6_w3bg8"]
+[ext_resource type="Texture2D" uid="uid://di20x7e8hix87" path="res://cc0/cracks 8 - 256x256.png" id="6_y7den"]
 [ext_resource type="Script" uid="uid://c7b6o4r74ofhi" path="res://fishshadersprite.gd" id="7_5liib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q5k5"]
@@ -25,6 +28,10 @@ shader = ExtResource("2_6pnmo")
 shader_parameter/smoothing = 50.0
 shader_parameter/positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/radii = PackedFloat32Array(0, 0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twtwk"]
+shader = ExtResource("5_t8fg7")
+shader_parameter/refractionTexture = ExtResource("6_y7den")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7abl"]
 
@@ -75,6 +82,12 @@ camera = NodePath("..")
 head = NodePath("../../head")
 middle = NodePath("../../middle")
 tail = NodePath("../../tail")
+
+[node name="watersprite" type="Sprite2D" parent="fish/Camera2D" unique_id=90841591 node_paths=PackedStringArray("camera")]
+material = SubResource("ShaderMaterial_twtwk")
+texture = ExtResource("4_1yv58")
+script = ExtResource("6_w3bg8")
+camera = NodePath("..")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="fish" unique_id=960102166 node_paths=PackedStringArray("head")]
 rotation = 3.14159
