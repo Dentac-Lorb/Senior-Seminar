@@ -49,7 +49,7 @@ void fragment() {
 	//float min3 = smoothMin(min2, dst1a, smoothing);
 	//float min4 = smoothMin(min3, dst2a, smoothing);
 	float dist = smoothMinDist(FRAGCOORD);
-	float alpha = smoothstep(-2, 0, -dist) * .5 + .5;
+	float alpha = smoothstep(-2, 0, -dist);
 	COLOR = vec4(1,1,1,alpha);
 }
 
