@@ -17,6 +17,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y7den"]
 shader = ExtResource("1_48rq1")
 shader_parameter/sandTexture = ExtResource("2_76qxq")
+shader_parameter/tint = Color(0.8727538, 0.99022037, 0.9818035, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q5k5"]
 shader = ExtResource("2_6pnmo")
