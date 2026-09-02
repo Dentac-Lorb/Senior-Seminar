@@ -13,18 +13,27 @@ shader = ExtResource("2_6pnmo")
 shader_parameter/pos1 = Vector2(0, 0)
 shader_parameter/pos2 = Vector2(0, 0)
 shader_parameter/pos3 = Vector2(0, 0)
+shader_parameter/rad1 = 30.0
+shader_parameter/rad2 = 25.0
+shader_parameter/rad3 = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtkvm"]
 shader = ExtResource("2_6pnmo")
 shader_parameter/pos1 = Vector2(0, 0)
 shader_parameter/pos2 = Vector2(0, 0)
 shader_parameter/pos3 = Vector2(0, 0)
+shader_parameter/rad1 = 30.0
+shader_parameter/rad2 = 25.0
+shader_parameter/rad3 = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_452ls"]
 shader = ExtResource("2_6pnmo")
 shader_parameter/pos1 = Vector2(0, 0)
 shader_parameter/pos2 = Vector2(0, 0)
 shader_parameter/pos3 = Vector2(0, 0)
+shader_parameter/rad1 = 30.0
+shader_parameter/rad2 = 25.0
+shader_parameter/rad3 = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7abl"]
 
@@ -36,12 +45,18 @@ shader = ExtResource("2_6pnmo")
 shader_parameter/pos1 = Vector2(0, 0)
 shader_parameter/pos2 = Vector2(0, 0)
 shader_parameter/pos3 = Vector2(0, 0)
+shader_parameter/rad1 = 30.0
+shader_parameter/rad2 = 25.0
+shader_parameter/rad3 = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s4tek"]
 shader = ExtResource("2_6pnmo")
 shader_parameter/pos1 = Vector2(0, 0)
 shader_parameter/pos2 = Vector2(0, 0)
 shader_parameter/pos3 = Vector2(0, 0)
+shader_parameter/rad1 = 30.0
+shader_parameter/rad2 = 25.0
+shader_parameter/rad3 = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucdlj"]
 radius = 21.2132
@@ -97,6 +112,7 @@ scale = Vector2(1.0000001, 1.0000001)
 linear_damp = 5.0
 
 [node name="Sprite2D3" type="Sprite2D" parent="fish/tail" unique_id=1601348196]
+visible = false
 scale = Vector2(0.203125, 0.203125)
 texture = ExtResource("4_1yv58")
 
@@ -110,6 +126,7 @@ position = Vector2(-48, 0.0565414)
 linear_damp = 5.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="fish/middle" unique_id=225674828]
+visible = false
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("4_1yv58")
 

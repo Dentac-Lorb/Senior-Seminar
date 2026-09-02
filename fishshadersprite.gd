@@ -15,8 +15,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var rect = camera.get_viewport_rect()
 	var headpos = head.position + rect.size /2 
-	var middlepos = middle.position - rect.position #/ rect.size
-	var tailpos = tail.position - rect.position #/ rect.size
+	var middlepos = middle.position + rect.size /2 
+	var tailpos = tail.position + rect.size /2 
 	material.set_shader_parameter("pos1", headpos)
 	material.set_shader_parameter("pos2", middlepos)
 	material.set_shader_parameter("pos3", tailpos)
