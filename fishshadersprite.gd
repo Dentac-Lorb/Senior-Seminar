@@ -4,6 +4,7 @@ extends Node2D
 @export var head: CharacterBody2D
 @export var middle: RigidBody2D
 @export var tail: RigidBody2D
+@export var tail2: RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,9 +18,10 @@ func _process(delta: float) -> void:
 	var headpos = head.position + rect.size /2 
 	var middlepos = middle.position + rect.size /2 
 	var tailpos = tail.position + rect.size /2 
+	var tail2pos = tail2.position + rect.size /2 
 	position = head.position
-	var positions = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos]
-	var radii = [15, 20, 12, 10, 8]
+	var positions = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos, (tailpos + tail2pos) / 2, tail2pos]
+	var radii = [15, 20, 12, 10, 8, 5, 5]
 	#material.set_shader_parameter("pos1", headpos)
 	#material.set_shader_parameter("pos2", middlepos)
 	#material.set_shader_parameter("pos3", tailpos)

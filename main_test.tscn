@@ -85,15 +85,16 @@ rotation = 0.00117801
 material = SubResource("ShaderMaterial_wtkvm")
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="shadersprite" type="Sprite2D" parent="fish/Camera2D" unique_id=2005123251 node_paths=PackedStringArray("camera", "head", "middle", "tail")]
+[node name="shadersprite" type="Sprite2D" parent="fish/Camera2D" unique_id=2005123251 node_paths=PackedStringArray("camera", "head", "middle", "tail", "tail2")]
 material = SubResource("ShaderMaterial_452ls")
-scale = Vector2(2.0017135, 2.0017135)
+scale = Vector2(3.002, 3.002)
 texture = ExtResource("4_1yv58")
 script = ExtResource("7_5liib")
 camera = NodePath("..")
 head = NodePath("../../head")
 middle = NodePath("../../middle")
 tail = NodePath("../../tail")
+tail2 = NodePath("../../tail2")
 
 [node name="watersprite" type="Sprite2D" parent="fish/Camera2D" unique_id=90841591 node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_twtwk")
@@ -115,9 +116,30 @@ node_b = NodePath("../tail")
 script = ExtResource("5_6lgnl")
 middle = NodePath("../middle")
 
+[node name="PinJoint2D3" type="PinJoint2D" parent="fish" unique_id=979621725]
+position = Vector2(-79.99994, 0.094240785)
+scale = Vector2(1.0000001, 1.0000001)
+node_a = NodePath("../tail")
+node_b = NodePath("../tail2")
+
+[node name="tail2" type="RigidBody2D" parent="fish" unique_id=2087556175]
+use_parent_material = true
+position = Vector2(-120, 0.135)
+scale = Vector2(1.0000002, 1.0000002)
+linear_damp = 5.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="fish/tail2" unique_id=205263951]
+visible = false
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("4_1yv58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fish/tail2" unique_id=501212411]
+use_parent_material = true
+shape = SubResource("CircleShape2D_h7abl")
+
 [node name="tail" type="RigidBody2D" parent="fish" unique_id=76888033]
 use_parent_material = true
-position = Vector2(-79.99882, 1.09424)
+position = Vector2(-79.99994, 0.09424102)
 scale = Vector2(1.0000001, 1.0000001)
 linear_damp = 5.0
 
@@ -144,7 +166,7 @@ texture = ExtResource("4_1yv58")
 use_parent_material = true
 shape = SubResource("CircleShape2D_bscfj")
 
-[node name="head" type="CharacterBody2D" parent="fish" unique_id=1073741742 node_paths=PackedStringArray("middle", "tail")]
+[node name="head" type="CharacterBody2D" parent="fish" unique_id=1073741742 node_paths=PackedStringArray("middle", "tail", "tail2")]
 material = SubResource("ShaderMaterial_ygoab")
 use_parent_material = true
 scale = Vector2(1.0000001, 1.0000001)
@@ -152,6 +174,7 @@ motion_mode = 1
 script = ExtResource("2_3eqfy")
 middle = NodePath("../middle")
 tail = NodePath("../tail")
+tail2 = NodePath("../tail2")
 
 [node name="Sprite2D" type="Sprite2D" parent="fish/head" unique_id=1172547965]
 visible = false

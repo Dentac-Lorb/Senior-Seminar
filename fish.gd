@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var constraint_magnitude = 100
 @export var middle: RigidBody2D
 @export var tail: RigidBody2D
+@export var tail2: RigidBody2D
 var wave_timer = 0.0
 var go_to_pos: Vector2 = Vector2.ZERO
 var look: float = 0.0
@@ -36,7 +37,7 @@ func get_input(delta):
 	if mouse_down:
 		go_to_pos = get_global_mouse_position()
 	var squared_dist = position.distance_squared_to(go_to_pos)
-	var moving = squared_dist > 50
+	var moving = squared_dist > 1000
 	
 	#MOUSE_BUTTON_LEFT
 	#look_at(go_to_pos)
@@ -62,7 +63,7 @@ func get_input(delta):
 	if moving:
 		velocity = transform.x * speed * max(1-(diff**2), 0.1)
 	else: 
-		velocity = Vector2.ZERO
+		velocity *= 0.05 ** delta
 	
 	
 func _physics_process(delta):
@@ -72,10 +73,12 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	var scaled_mag = 100 + constraint_magnitude * (abs(angle_difference(rotation - PI, position.angle_to_point(middle.position))) ** 8)
-	middle.apply_force(Vector2.from_angle(rotation - PI) * scaled_mag)
+	middle.apply_force(Vector2.from_angle(rotation - PI) * min(scaled_mag, 1000))
 	
 	#var scaled_mag_2 = constraint_magnitude * (abs(angle_difference(position.angle_to_point(middle.position), middle.position.angle_to_point(tail.position))) ** 2)
 	var scaled_mag_2 = 100 + constraint_magnitude * (abs(angle_difference(rotation - PI, position.angle_to_point(tail.position))) ** 8)
-	tail.apply_force(Vector2.from_angle(position.angle_to_point(tail.position)) * scaled_mag_2)
+	tail.apply_force(Vector2.from_angle(position.angle_to_point(tail.position)) * min(scaled_mag_2, 1000))
 	
+	var scaled_mag_3 = 50 + constraint_magnitude * .5 * (abs(angle_difference(rotation - PI, middle.position.angle_to_point(tail2.position))) ** 8)
+	tail2.apply_force(Vector2.from_angle(middle.position.angle_to_point(tail2.position)) * min(scaled_mag_3, 1000))
 	

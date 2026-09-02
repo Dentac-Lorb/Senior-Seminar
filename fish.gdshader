@@ -10,7 +10,7 @@ shader_type canvas_item;
 //uniform float rad3 = 15.0;
 uniform float smoothing = 100;
 
-const int circles = 5;
+const int circles = 7;
 uniform vec2[circles] positions;
 uniform float[circles] radii;
 
