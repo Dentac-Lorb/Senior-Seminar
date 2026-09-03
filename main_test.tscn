@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://busjmg405ge33" path="res://fish_proto.gd" id="1_57xna"]
 [ext_resource type="Script" uid="uid://cf1i8a6o6jrg4" path="res://fish.gd" id="2_3eqfy"]
 [ext_resource type="Shader" uid="uid://d23cwsnsa14ib" path="res://fish.gdshader" id="2_6pnmo"]
-[ext_resource type="Texture2D" uid="uid://com0rm4an6xoo" path="res://cc0/dirt2.png" id="2_76qxq"]
+[ext_resource type="Texture2D" uid="uid://dfhutunj5oifn" path="res://cc0/dirt2.png" id="2_76qxq"]
+[ext_resource type="Texture2D" uid="uid://cstys3lcemnxd" path="res://cc0/gabor 12 - 256x256.png" id="2_wqrm1"]
 [ext_resource type="Script" uid="uid://cfau6k0pgss2l" path="res://sand.gd" id="3_76qxq"]
 [ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="4_1yv58"]
 [ext_resource type="Script" uid="uid://wukyq1suij25" path="res://rtjrthjrt.gd" id="4_pgddy"]
@@ -17,6 +18,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y7den"]
 shader = ExtResource("1_48rq1")
 shader_parameter/sandTexture = ExtResource("2_76qxq")
+shader_parameter/noiseTexture = ExtResource("2_wqrm1")
 shader_parameter/tint = Color(0.8727538, 0.99022037, 0.9818035, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q5k5"]

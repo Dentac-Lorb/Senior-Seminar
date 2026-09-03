@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfhutunj5oifn"
-path="res://.godot/imported/dirt2.png-b49fec3e5388f9f0198f58fb3ba0ff54.ctex"
+uid="uid://cstys3lcemnxd"
+path="res://.godot/imported/gabor 12 - 256x256.png-bb8500d4c246b0f446a9249d8dcb5ba9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cc0/dirt2.png"
-dest_files=["res://.godot/imported/dirt2.png-b49fec3e5388f9f0198f58fb3ba0ff54.ctex"]
+source_file="res://cc0/gabor 12 - 256x256.png"
+dest_files=["res://.godot/imported/gabor 12 - 256x256.png-bb8500d4c246b0f446a9249d8dcb5ba9.ctex"]
 
 [params]
 
