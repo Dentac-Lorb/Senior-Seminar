@@ -14,7 +14,7 @@ const int circles = 7;
 uniform vec2[circles] positions;
 uniform float[circles] radii;
 uniform float[4] bounds;
-uniform vec2[4] finPositions;
+uniform vec2[6] finPositions;
 
 
 // Smoothing function from Sebastion Lague
@@ -60,7 +60,8 @@ vec4 bodyColor(vec4 frag){
 vec4 finColor(vec4 frag){
 	float finDist1 = distance(frag.xy, finPositions[0]) + distance(frag.xy, finPositions[1]) - 30.0;
 	float finDist2 = distance(frag.xy, finPositions[2]) + distance(frag.xy, finPositions[3]) - 30.0;
-	float minDist = min(finDist1, finDist2);
+	float finDist3 = distance(frag.xy, finPositions[4]) + distance(frag.xy, finPositions[5]) - 35.0;
+	float minDist = min(min(finDist1, finDist2), finDist3);
 	float alpha = smoothstep(-2, 0, -minDist);
 	return vec4(0,0,0,alpha);
 }

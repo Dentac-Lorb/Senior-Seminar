@@ -15,11 +15,18 @@ func _ready() -> void:
 func fin_positions(positions: Array[Vector2], radii):
 	var midforwardvec = (positions[0] - positions[4]).normalized()
 	
+	var tailvec = (positions[4] - positions[6]).normalized()
+	var tailfinvec = tailvec.rotated(
+	-(positions[4] - positions[6]).angle_to(positions[2] - positions[4]))
+	var tailfinpos = positions[6] - tailvec * radii[6]
+	
 	var fin_pos = [
 		midforwardvec.rotated(PI/2) * radii[3] * 1.1 + positions[2],
 		midforwardvec.rotated(PI*0.7) * radii[3] * 3.3 + positions[2],
 		midforwardvec.rotated(-PI/2) * radii[3] * 1.1 + positions[2],
 		midforwardvec.rotated(-PI*0.7) * radii[3] * 3.3 + positions[2],
+		positions[6],
+		tailfinpos - tailfinvec * 25,
 	]
 	
 	material.set_shader_parameter("finPositions", fin_pos)
