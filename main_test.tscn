@@ -20,16 +20,9 @@ shader = ExtResource("1_48rq1")
 shader_parameter/sandTexture = ExtResource("2_76qxq")
 shader_parameter/noiseTexture = ExtResource("2_wqrm1")
 shader_parameter/tint = Color(0.8727538, 0.99022037, 0.9818035, 1)
+shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8q5k5"]
-shader = ExtResource("2_6pnmo")
-shader_parameter/smoothing = 0.0
-shader_parameter/positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/radii = PackedFloat32Array(0, 0, 0, 0, 0)
-shader_parameter/bounds = PackedFloat32Array(0, 0, 0, 0)
-shader_parameter/finPositions = PackedVector2Array(0, 0, 0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtkvm"]
 shader = ExtResource("2_6pnmo")
 shader_parameter/smoothing = 0.0
 shader_parameter/positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -45,9 +38,18 @@ shader_parameter/radii = PackedFloat32Array(0, 0, 0, 0, 0)
 shader_parameter/bounds = PackedFloat32Array(0, 0, 0, 0)
 shader_parameter/finPositions = PackedVector2Array(0, 0, 0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtkvm"]
+shader = ExtResource("2_6pnmo")
+shader_parameter/smoothing = 0.0
+shader_parameter/positions = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/radii = PackedFloat32Array(0, 0, 0, 0, 0)
+shader_parameter/bounds = PackedFloat32Array(0, 0, 0, 0)
+shader_parameter/finPositions = PackedVector2Array(0, 0, 0, 0)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twtwk"]
 shader = ExtResource("5_t8fg7")
 shader_parameter/refractionTexture = ExtResource("6_y7den")
+shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7abl"]
 
@@ -93,20 +95,20 @@ metadata/Rot2 = 0.0
 material = SubResource("ShaderMaterial_8q5k5")
 rotation = 0.00117801
 
+[node name="shadersprite" type="Sprite2D" parent="fish" unique_id=2005123251 node_paths=PackedStringArray("camera", "head", "middle", "tail", "tail2")]
+material = SubResource("ShaderMaterial_452ls")
+scale = Vector2(3.0020003, 3.0020003)
+texture = ExtResource("4_1yv58")
+script = ExtResource("7_5liib")
+camera = NodePath("../Camera2D")
+head = NodePath("../head")
+middle = NodePath("../middle")
+tail = NodePath("../tail")
+tail2 = NodePath("../tail2")
+
 [node name="Camera2D" type="Camera2D" parent="fish" unique_id=1584134145]
 material = SubResource("ShaderMaterial_wtkvm")
 scale = Vector2(1.0000001, 1.0000001)
-
-[node name="shadersprite" type="Sprite2D" parent="fish/Camera2D" unique_id=2005123251 node_paths=PackedStringArray("camera", "head", "middle", "tail", "tail2")]
-material = SubResource("ShaderMaterial_452ls")
-scale = Vector2(3.002, 3.002)
-texture = ExtResource("4_1yv58")
-script = ExtResource("7_5liib")
-camera = NodePath("..")
-head = NodePath("../../head")
-middle = NodePath("../../middle")
-tail = NodePath("../../tail")
-tail2 = NodePath("../../tail2")
 
 [node name="watersprite" type="Sprite2D" parent="fish/Camera2D" unique_id=90841591 node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_twtwk")
@@ -178,7 +180,7 @@ texture = ExtResource("4_1yv58")
 use_parent_material = true
 shape = SubResource("CircleShape2D_bscfj")
 
-[node name="head" type="CharacterBody2D" parent="fish" unique_id=1073741742 node_paths=PackedStringArray("middle", "tail", "tail2")]
+[node name="head" type="CharacterBody2D" parent="fish" unique_id=1073741742 node_paths=PackedStringArray("middle", "tail", "tail2", "camera")]
 material = SubResource("ShaderMaterial_ygoab")
 use_parent_material = true
 scale = Vector2(1.0000001, 1.0000001)
@@ -187,6 +189,7 @@ script = ExtResource("2_3eqfy")
 middle = NodePath("../middle")
 tail = NodePath("../tail")
 tail2 = NodePath("../tail2")
+camera = NodePath("../Camera2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="fish/head" unique_id=1172547965]
 visible = false

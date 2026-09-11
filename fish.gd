@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var middle: RigidBody2D
 @export var tail: RigidBody2D
 @export var tail2: RigidBody2D
+@export var camera: Camera2D
 var wave_timer = 0.0
 var go_to_pos: Vector2 = Vector2.ZERO
 var look: float = 0.0
@@ -29,13 +30,16 @@ func _input(event: InputEvent) -> void:
 		mouse_down = true
 	if event.is_action_released(&"click"):
 		mouse_down = false
+	if event.is_action_released("recenter_camera"):
+		camera.position = position
+		#camera.offset = position
 		
 		
 
 	
 func get_input(delta):
 	if mouse_down:
-		go_to_pos = get_global_mouse_position()
+		go_to_pos = get_global_mouse_position() #+ camera.position
 	var squared_dist = position.distance_squared_to(go_to_pos)
 	var moving = squared_dist > 1000
 	
@@ -64,6 +68,8 @@ func get_input(delta):
 		velocity = transform.x * speed * max(1-(diff**2), 0.1)
 	else: 
 		velocity *= 0.05 ** delta
+		
+	
 	
 	
 func _physics_process(delta):

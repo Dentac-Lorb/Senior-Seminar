@@ -37,10 +37,10 @@ func fin_positions(positions: Array[Vector2], radii):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var rect = camera.get_viewport_rect()
-	var headpos = head.position + rect.size /2 
-	var middlepos = middle.position + rect.size /2 
-	var tailpos = tail.position + rect.size /2 
-	var tail2pos = tail2.position + rect.size /2 
+	var headpos = head.position + rect.size /2 - camera.position
+	var middlepos = middle.position + rect.size /2  - camera.position
+	var tailpos = tail.position + rect.size /2  - camera.position
+	var tail2pos = tail2.position + rect.size /2  - camera.position
 	position = head.position
 	var positions: Array[Vector2] = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos, (tailpos + tail2pos) / 2, tail2pos]
 	var radii = [15, 20, 12, 10, 8, 5, 5]
