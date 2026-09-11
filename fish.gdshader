@@ -14,6 +14,8 @@ const int circles = 7;
 uniform vec2[circles] positions;
 uniform float[circles] radii;
 uniform float[4] bounds;
+uniform vec2[4] finPositions;
+
 
 // Smoothing function from Sebastion Lague
 // https://youtu.be/Cp5WWtMoeKg?t=189
@@ -21,6 +23,8 @@ float smoothMin(float dstA, float dstB, float k){
 	float h = max(k-abs(dstA-dstB), 0) / k;
 	return min(dstA, dstB) - h*h*h*k/6.0;
 }
+
+
 
 float circleDist(vec4 frag, int index){
 	return distance(frag.xy, positions[index]) - radii[index];
@@ -53,6 +57,14 @@ vec4 bodyColor(vec4 frag){
 	return vec4(shade,shade,shade,alpha);
 }
 
+vec4 finColor(vec4 frag){
+	float finDist1 = distance(frag.xy, finPositions[0]) + distance(frag.xy, finPositions[1]) - 30.0;
+	float finDist2 = distance(frag.xy, finPositions[2]) + distance(frag.xy, finPositions[3]) - 30.0;
+	float minDist = min(finDist1, finDist2);
+	float alpha = smoothstep(-2, 0, -minDist);
+	return vec4(0,0,0,alpha);
+}
+
 void fragment() {
 	// Called for every pixel the material is visible on.
 	//float dst1 = distance(FRAGCOORD.xy, pos1) - rad1;
@@ -64,7 +76,10 @@ void fragment() {
 	//float min2 = smoothMin(min1, dst3, smoothing);
 	//float min3 = smoothMin(min2, dst1a, smoothing);
 	//float min4 = smoothMin(min3, dst2a, smoothing);
-	COLOR = bodyColor(FRAGCOORD);
+	vec4 finCol = finColor(FRAGCOORD);
+	vec4 bodyCol = bodyColor(FRAGCOORD);
+	
+	COLOR = mix(finCol, bodyCol, bodyCol.a);
 }
 
 //void light() {

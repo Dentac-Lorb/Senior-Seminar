@@ -12,6 +12,21 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+func fin_positions(positions: Array[Vector2], radii):
+	var midforwardvec = (positions[0] - positions[4]).normalized()
+	
+	var fin_pos = [
+		midforwardvec.rotated(PI/2) * radii[3] + positions[2],
+		midforwardvec.rotated(PI*0.7) * radii[3] * 3.3 + positions[2],
+		midforwardvec.rotated(-PI/2) * radii[3] + positions[2],
+		midforwardvec.rotated(-PI*0.7) * radii[3] * 3.3 + positions[2],
+	]
+	
+	material.set_shader_parameter("finPositions", fin_pos)
+	
+	
+	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var rect = camera.get_viewport_rect()
@@ -20,7 +35,7 @@ func _process(delta: float) -> void:
 	var tailpos = tail.position + rect.size /2 
 	var tail2pos = tail2.position + rect.size /2 
 	position = head.position
-	var positions = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos, (tailpos + tail2pos) / 2, tail2pos]
+	var positions: Array[Vector2] = [headpos, (headpos + middlepos) / 2, middlepos, (middlepos + tailpos) / 2, tailpos, (tailpos + tail2pos) / 2, tail2pos]
 	var radii = [15, 20, 12, 10, 8, 5, 5]
 	var bounds = [INF,-INF,INF,-INF]
 	
@@ -33,7 +48,8 @@ func _process(delta: float) -> void:
 			bounds[2] = positions[i].y - radii[i] - 10
 		if positions[i].y + radii[i] + 10 > bounds[3]:
 			bounds[3] = positions[i].y + radii[i] + 10
-	
+			
+	fin_positions(positions, radii)
 	
 	#material.set_shader_parameter("pos1", headpos)
 	#material.set_shader_parameter("pos2", middlepos)
