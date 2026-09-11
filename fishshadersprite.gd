@@ -16,9 +16,9 @@ func fin_positions(positions: Array[Vector2], radii):
 	var midforwardvec = (positions[0] - positions[4]).normalized()
 	
 	var fin_pos = [
-		midforwardvec.rotated(PI/2) * radii[3] + positions[2],
+		midforwardvec.rotated(PI/2) * radii[3] * 1.1 + positions[2],
 		midforwardvec.rotated(PI*0.7) * radii[3] * 3.3 + positions[2],
-		midforwardvec.rotated(-PI/2) * radii[3] + positions[2],
+		midforwardvec.rotated(-PI/2) * radii[3] * 1.1 + positions[2],
 		midforwardvec.rotated(-PI*0.7) * radii[3] * 3.3 + positions[2],
 	]
 	
