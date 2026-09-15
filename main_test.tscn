@@ -76,6 +76,7 @@ shader_parameter/finPositions = PackedVector2Array(0, 0, 0, 0)
 radius = 21.2132
 
 [node name="Player" type="Node2D" unique_id=612815997]
+metadata/camera = NodePath("fish/Camera2D")
 
 [node name="sand" type="Sprite2D" parent="." unique_id=1218151262 node_paths=PackedStringArray("camera")]
 z_index = -1
