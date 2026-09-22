@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0pl6o6womgji"]
+
+[ext_resource type="Script" path="res://button_trigger.gd" id="1_4qsqo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhhh"]
+size = Vector2(40, 40)
+
+[node name="ButtonTrigger" type="Area2D" unique_id=333483667]
+script = ExtResource("1_4qsqo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1101351439]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.9948329, 0.33806536, 0.33806536, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1826275733]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_vjhhh")

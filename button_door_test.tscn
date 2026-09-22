@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ctouw42wba1i6"]
+
+[ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="1_4xiey"]
+[ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="2_5i6fs"]
+[ext_resource type="PackedScene" uid="uid://0a2hoavfwmyr" path="res://main_test.tscn" id="3_n605e"]
+
+[node name="ButtonDoorTest" type="Node2D" unique_id=1261303803]
+
+[node name="Node2D" parent="." unique_id=612815997 instance=ExtResource("3_n605e")]
+position = Vector2(-3, -21)
+
+[node name="ButtonTrigger" parent="." unique_id=333483667 node_paths=PackedStringArray("target_door") instance=ExtResource("1_4xiey")]
+z_index = 2
+position = Vector2(-200, 0)
+target_door = NodePath("../Door")
+
+[node name="Door" parent="." unique_id=761282455 instance=ExtResource("2_5i6fs")]
+z_index = 2
+position = Vector2(200, -15)
