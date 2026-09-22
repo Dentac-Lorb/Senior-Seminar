@@ -15,5 +15,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var camera: Camera2D = player.get_node(player.get_meta("camera"))
 	var rect = camera.get_viewport_rect()
-	material.set_shader_parameter("offset", rect.size /2 - camera.position)
+	material.set_shader_parameter("offset", position + rect.size /2 - camera.position)
 	
