@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://d0pl6o6womgji"]
 
 [ext_resource type="Script" path="res://button_trigger.gd" id="1_4qsqo"]
-=======
-[gd_scene format=3 uid="uid://budtbua4nq5ki"]
-
-[ext_resource type="Script" uid="uid://brlvn6hevvrvy" path="res://button_trigger.gd" id="1_4qsqo"]
->>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhhh"]
 size = Vector2(40, 40)
