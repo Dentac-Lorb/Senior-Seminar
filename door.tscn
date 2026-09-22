@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://bjnsjhoux7l7v"]
 
 [ext_resource type="Script" path="res://Door.gd" id="1_ba8gm"]
+=======
+[gd_scene format=3 uid="uid://rhhxve4rc32t"]
+
+[ext_resource type="Script" uid="uid://hof0ku4hj56i" path="res://Door.gd" id="1_ba8gm"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhhh"]
 size = Vector2(30, 150)

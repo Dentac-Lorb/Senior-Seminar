@@ -1,7 +1,14 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://ctouw42wba1i6"]
 
 [ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="1_4xiey"]
 [ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="2_5i6fs"]
+=======
+[gd_scene format=3 uid="uid://dmjoj1xbs3mrj"]
+
+[ext_resource type="PackedScene" uid="uid://budtbua4nq5ki" path="res://button_trigger.tscn" id="1_4xiey"]
+[ext_resource type="PackedScene" uid="uid://rhhxve4rc32t" path="res://door.tscn" id="2_5i6fs"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://0a2hoavfwmyr" path="res://main_test.tscn" id="3_n605e"]
 
 [node name="ButtonDoorTest" type="Node2D" unique_id=1261303803]
