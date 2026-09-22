@@ -1,7 +1,25 @@
 [gd_scene format=3 uid="uid://bsrhx6ynhlhvq"]
 
-[ext_resource type="PackedScene" uid="uid://0a2hoavfwmyr" path="res://main_test.tscn" id="1_n7km0"]
+[ext_resource type="PackedScene" path="res://main_test.tscn" id="1_n7km0"]
+[ext_resource type="Script" uid="uid://2cx8el2uwk0x" path="res://portal.gd" id="2_8jhq4"]
+[ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="3_uv1t4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_di4w3"]
 
 [node name="Node2D" type="Node2D" unique_id=112159527]
+position = Vector2(298, 402)
+metadata/_edit_vertical_guides_ = [-196.0]
 
 [node name="Player" parent="." unique_id=612815997 instance=ExtResource("1_n7km0")]
+position = Vector2(-136, -189)
+
+[node name="Portal" type="Area2D" parent="." unique_id=713692157]
+position = Vector2(46, -102)
+script = ExtResource("2_8jhq4")
+next_level = "uid://cula4o7t3usdl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal" unique_id=654543219]
+shape = SubResource("CircleShape2D_di4w3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Portal" unique_id=1105765905]
+texture = ExtResource("3_uv1t4")
