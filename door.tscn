@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bjnsjhoux7l7v"]
+
+[ext_resource type="Script" path="res://Door.gd" id="1_ba8gm"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhhh"]
+size = Vector2(30, 150)
+
+[node name="Door" type="StaticBody2D" unique_id=761282455]
+script = ExtResource("1_ba8gm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1575547907]
+offset_left = -15.0
+offset_top = -75.0
+offset_right = 15.0
+offset_bottom = 75.0
+color = Color(0.29, 0.18995, 0.029000007, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1877599692]
+shape = SubResource("RectangleShape2D_vjhhh")

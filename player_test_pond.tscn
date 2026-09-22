@@ -2,10 +2,20 @@
 
 [ext_resource type="Script" uid="uid://ucde5xbgrec8" path="res://player_test_pond.gd" id="1_q4a4t"]
 [ext_resource type="PackedScene" uid="uid://0a2hoavfwmyr" path="res://main_test.tscn" id="2_4pwpv"]
-[ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="3_4pwpv"]
+[ext_resource type="Shader" uid="uid://bo2ge2wm22syq" path="res://rock.gdshader" id="2_drpss"]
+[ext_resource type="Texture2D" uid="uid://dfhutunj5oifn" path="res://cc0/dirt2.png" id="3_orw0w"]
+[ext_resource type="Script" uid="uid://bjujkg2w8v4qd" path="res://rock.gd" id="4_orw0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twtwk"]
 size = Vector2(128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twtwk"]
+shader = ExtResource("2_drpss")
+shader_parameter/smoothing = 10.0
+shader_parameter/circleCoords = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/radii = PackedFloat32Array(0, 0, 0, 0, 0)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/sandTexture = ExtResource("3_orw0w")
 
 [node name="Node2D" type="Node2D" unique_id=1278756644 node_paths=PackedStringArray("player")]
 script = ExtResource("1_q4a4t")
@@ -17,7 +27,13 @@ position = Vector2(111, 120)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1907373563]
 shape = SubResource("RectangleShape2D_twtwk")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=897763484]
-texture = ExtResource("3_4pwpv")
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=897763484 node_paths=PackedStringArray("player")]
+material = SubResource("ShaderMaterial_twtwk")
+scale = Vector2(-0.24809845, -0.24809845)
+texture = ExtResource("3_orw0w")
+script = ExtResource("4_orw0w")
+circles = PackedVector2Array(130, 130, 40, 9, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)
+radii = PackedFloat32Array(50, 8, 0.3, 0.3, 0.3)
+player = NodePath("../../Player")
 
 [node name="Player" parent="." unique_id=612815997 instance=ExtResource("2_4pwpv")]
