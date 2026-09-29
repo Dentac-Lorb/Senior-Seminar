@@ -1,28 +1,40 @@
 extends Area2D
+class_name ButtonTrigger
 
-@export var target_door: StaticBody2D
+# Default to -1(All Channels). @export_flags gives checkboxes in the Inspector!
+@export_flags("Channel 1", "Channel 2", "Channel 3", "Channel 4", "Channel 5") var channel : int = -1
+
 @onready var color_rect: ColorRect = $ColorRect
 
 var overlapping_objects: int = 0
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	body_exited.connect(_on_body_entered)
 	
 func _on_body_entered(body: Node2D) -> void:
 	overlapping_objects += 1
 	if overlapping_objects == 1:
 		color_rect.color = Color.GREEN
-		if target_door and target_door.has_method("open_door"):
-			target_door.open_door()
-			
+		broadcast_state(true)
+		
 func _on_body_exited(body: Node2D) -> void:
 	overlapping_objects -= 1
 	if overlapping_objects <= 0:
 		overlapping_objects = 0
 		color_rect.color = Color.RED
-		if target_door and target_door.has_method("close door"):
-			target_door.close_door()				
+		broadcast_state(false)
+		
+func broadcast_state(activate_doors: bool) -> void:
+	# Find all doors in the scene and send the bitwise signal
+	var doors = get_tree().get_nodes_in_group("doors")
+	for door in doors:
+		if door.has_method("matches_channel") and door.matches_channel(channel):
+			if activate_doors:
+				door.activate()
+			else:
+				door.deactivate()
 	
-	
+		
+
 	
