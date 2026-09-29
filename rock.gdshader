@@ -38,13 +38,16 @@ void fragment() {
 	//for(int i = 1; i < circles; i++){
 		//dist = smoothMin(dist, distance(FRAGCOORD.xy, circleCoords[i]) - radii[i], smoothing);
 	//}
+	float trueMinDistSq = trueMinDist * trueMinDist;
 	vec2 distortionDirection = (circleCoords[trueMinDistIndex] + offset - FRAGCOORD.xy) / radii[trueMinDistIndex]; 
-	vec2 distortion = vec2(
-		trueMinDist * trueMinDist * cos(distortionDirection.x),
-		trueMinDist * trueMinDist * sin(distortionDirection.y)
-	);
-	float darken = 1.0 - distance(vec2(0.0), distortion) / trueMinDist / trueMinDist;
-	vec4 sandCol = texture(sandTexture, (FRAGCOORD.xy + offset + distortion)/500.0) * darken;
+	vec2 distortion = distortionDirection * trueMinDistSq;
+	/*vec2(
+		trueMinDistSq * sin(distortionDirection.x),
+		trueMinDistSq * sin(distortionDirection.y)
+	);*/
+	float distortion_magnitude = distance(vec2(0.0), distortionDirection);
+	float darken = 1.0 - distortion_magnitude * distortion_magnitude * .5;
+	vec4 sandCol = texture(sandTexture, (FRAGCOORD.xy + offset + distortion)/1000.0) * darken;
 	//COLOR = vec4(sandCol.rgb, smoothstep(-2, 0, -dist));
 	COLOR.rgb = sandCol.rgb;
 	COLOR.a = smoothstep(-0.02, 0, -dist);

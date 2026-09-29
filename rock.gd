@@ -8,6 +8,13 @@ extends Sprite2D
 func _ready() -> void:
 	material.set_shader_parameter("circleCoords", circles)
 	material.set_shader_parameter("radii", radii)
+	var colliders = get_parent().find_children("*", "CollisionShape2D")
+	for i in range(min(colliders.size(), circles.size())):
+		var collider: CollisionShape2D = colliders[i]
+		collider.position = circles[i]
+		var shape: CircleShape2D = collider.shape
+		shape.radius = radii[i]
+		
 	
 
 
@@ -15,5 +22,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var camera: Camera2D = player.get_node(player.get_meta("camera"))
 	var rect = camera.get_viewport_rect()
-	material.set_shader_parameter("offset", position + rect.size /2 - camera.position)
+	material.set_shader_parameter("offset", get_parent().position + rect.size /2 - camera.position)
 	
