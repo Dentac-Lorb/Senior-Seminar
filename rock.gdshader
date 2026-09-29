@@ -35,9 +35,15 @@ void fragment() {
 	dists[0] = dist;
 	float trueMinDist = dist;
 	int trueMinDistIndex = 0;
-	//for(int i = 1; i < circles; i++){
-		//dist = smoothMin(dist, distance(FRAGCOORD.xy, circleCoords[i]) - radii[i], smoothing);
-	//}
+	for(int i = 1; i < circles; i++){
+		dists[i] = distance(FRAGCOORD.xy, offset + circleCoords[i]) - radii[i];
+		if (dists[i] < dist){
+			trueMinDist = dists[i];
+			trueMinDistIndex = i;
+		}
+		dist = smoothMin(dist, dists[i], smoothing);
+		
+	}
 	float trueMinDistSq = trueMinDist * trueMinDist;
 	vec2 distortionDirection = (circleCoords[trueMinDistIndex] + offset - FRAGCOORD.xy) / radii[trueMinDistIndex]; 
 	vec2 distortion = distortionDirection * trueMinDistSq;
