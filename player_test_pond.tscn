@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ucde5xbgrec8" path="res://player_test_pond.gd" id="1_q4a4t"]
 [ext_resource type="PackedScene" uid="uid://0a2hoavfwmyr" path="res://main_test.tscn" id="2_4pwpv"]
 [ext_resource type="Shader" uid="uid://bo2ge2wm22syq" path="res://rock.gdshader" id="2_drpss"]
+[ext_resource type="PackedScene" uid="uid://gif4avonwugs" path="res://rock.tscn" id="2_orw0w"]
 [ext_resource type="Texture2D" uid="uid://dfhutunj5oifn" path="res://cc0/dirt2.png" id="3_orw0w"]
 [ext_resource type="Script" uid="uid://bjujkg2w8v4qd" path="res://rock.gd" id="4_orw0w"]
 
@@ -29,6 +30,13 @@ shader_parameter/sandTexture = ExtResource("3_orw0w")
 [node name="Node2D" type="Node2D" unique_id=1278756644 node_paths=PackedStringArray("player")]
 script = ExtResource("1_q4a4t")
 player = NodePath("Player")
+
+[node name="Rock" parent="." unique_id=2128440721 node_paths=PackedStringArray("player") instance=ExtResource("2_orw0w")]
+position = Vector2(156, -39)
+num_colliders = 2
+circles = PackedVector2Array(-10, -10, 15, 6)
+radii = PackedFloat32Array(20, 25)
+player = NodePath("../Player")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1502470]
 position = Vector2(111, 120)

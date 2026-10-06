@@ -1,14 +1,21 @@
 extends Sprite2D
 
+class_name RockSprite
+
 @export var circles: PackedVector2Array
 @export var radii: PackedFloat32Array
 @export var player: Node2D
+
+var external_colliders: Array[CollisionShape2D] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	material.set_shader_parameter("circleCoords", circles)
 	material.set_shader_parameter("radii", radii)
-	var colliders = get_parent().find_children("*", "CollisionShape2D")
+	recalculate()
+	
+func recalculate():
+	var colliders = external_colliders if not external_colliders.is_empty() else get_parent().find_children("*", "CollisionShape2D")#.filter(func(x): x is not ConfigWarningSuppressor)
 	for i in range(min(colliders.size(), circles.size())):
 		var collider: CollisionShape2D = colliders[i]
 		collider.position = circles[i]
