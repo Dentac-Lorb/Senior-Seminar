@@ -6,20 +6,440 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_di4w3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vffu"]
+size = Vector2(300, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7ju7"]
+size = Vector2(300, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gchv"]
+size = Vector2(300, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aotxc"]
+size = Vector2(300, 30)
+
 [node name="Node2D" type="Node2D" unique_id=112159527]
-position = Vector2(298, 402)
+scale = Vector2(1.0169133, 1.0277778)
 metadata/_edit_vertical_guides_ = [-196.0]
 
 [node name="Player" parent="." unique_id=612815997 instance=ExtResource("1_n7km0")]
-position = Vector2(-136, -189)
+position = Vector2(362, -143)
 
 [node name="Portal" type="Area2D" parent="." unique_id=713692157]
-position = Vector2(46, -102)
+position = Vector2(1721.8774, 10.702702)
 script = ExtResource("2_8jhq4")
 next_level = "uid://cula4o7t3usdl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal" unique_id=654543219]
+position = Vector2(40, -4)
+rotation = 0.26085567
 shape = SubResource("CircleShape2D_di4w3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Portal" unique_id=1105765905]
+position = Vector2(40, -4)
 texture = ExtResource("3_uv1t4")
+
+[node name="MazeWall" type="StaticBody2D" parent="." unique_id=1057516296]
+position = Vector2(166.18921, 361.94595)
+scale = Vector2(-1.8678318, 0.22376983)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall" unique_id=1320490022]
+position = Vector2(-26.791271, 575.1566)
+scale = Vector2(1.0137106, 3.9329548)
+shape = SubResource("RectangleShape2D_6vffu")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall" unique_id=1439034184]
+offset_left = -150.0
+offset_top = -15.0
+offset_right = 150.0
+offset_bottom = 15.0
+scale = Vector2(0.9911573, 1)
+color = Color(1, 0.08235294, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MazeWall2" type="StaticBody2D" parent="." unique_id=242087849]
+position = Vector2(-133.73804, 352.21625)
+rotation = 1.564427
+scale = Vector2(1.8410344, -0.3881615)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall2" unique_id=1119423717]
+position = Vector2(-150, -15)
+shape = SubResource("RectangleShape2D_p7ju7")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall2/CollisionShape2D" unique_id=692847292]
+offset_left = -150.00002
+offset_top = -14.999939
+offset_right = 149.99998
+offset_bottom = 15.000061
+color = Color(1, 0.08235294, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MazeWall3" type="StaticBody2D" parent="." unique_id=718313994]
+position = Vector2(79.65281, -266.59467)
+rotation = -3.141383
+scale = Vector2(-1.3308963, -0.32117003)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall3" unique_id=1359131801]
+position = Vector2(-150, 15)
+scale = Vector2(0.99999976, 0.9985769)
+shape = SubResource("RectangleShape2D_4gchv")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall3" unique_id=961362037]
+offset_left = -150.0
+offset_top = -14.999998
+offset_right = 150.0
+offset_bottom = 15.000002
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall4" type="StaticBody2D" parent="." unique_id=951503311]
+position = Vector2(388.43036, -258.8108)
+rotation = -3.141383
+scale = Vector2(1.6090972, 0.36274254)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall4" unique_id=1644065538]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall4/CollisionShape2D" unique_id=1639276370]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall5" type="StaticBody2D" parent="." unique_id=171076116]
+position = Vector2(1139.7236, -251.02702)
+rotation = -1.5793599
+scale = Vector2(1.8366935, -0.27314353)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall5" unique_id=107901031]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall5/CollisionShape2D" unique_id=1609575675]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall6" type="StaticBody2D" parent="." unique_id=1977051202]
+position = Vector2(615.58813, 360.97296)
+rotation = -1.5793599
+scale = Vector2(0.028251434, 10.218892)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall6" unique_id=1873095424]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall6/CollisionShape2D" unique_id=2081808958]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall7" type="StaticBody2D" parent="." unique_id=864794986]
+position = Vector2(936.1664, 131.35136)
+rotation = -0.00076806545
+scale = Vector2(2.7951868, 0.46603936)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall7" unique_id=490200454]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall7/CollisionShape2D" unique_id=1234280813]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall8" type="StaticBody2D" parent="." unique_id=650416853]
+position = Vector2(549.7027, 127.459435)
+rotation = -1.5979774
+scale = Vector2(0.31955642, -0.37679613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall8" unique_id=634153480]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall8/CollisionShape2D" unique_id=1262067909]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall9" type="StaticBody2D" parent="." unique_id=1194929182]
+position = Vector2(551.66943, 211.13513)
+rotation = -3.1221423
+scale = Vector2(0.31127807, -0.40106228)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall9" unique_id=301417132]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall9/CollisionShape2D" unique_id=2006789328]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall10" type="StaticBody2D" parent="." unique_id=687600318]
+position = Vector2(619.5217, 359.027)
+rotation = 1.5580195
+scale = Vector2(0.18243274, 0.26680276)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall10" unique_id=2089782918]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall10/CollisionShape2D" unique_id=221010668]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall11" type="StaticBody2D" parent="." unique_id=492227076]
+position = Vector2(439.56552, 364.86487)
+rotation = 1.5240024
+scale = Vector2(0.31969106, -0.29663903)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall11" unique_id=1594825]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall11/CollisionShape2D" unique_id=1165019538]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall12" type="StaticBody2D" parent="." unique_id=1782918342]
+position = Vector2(436.6154, 279.24326)
+rotation = -0.0031450372
+scale = Vector2(1.6032606, -0.32568946)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall12" unique_id=1490105078]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall12/CollisionShape2D" unique_id=571187186]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall13" type="StaticBody2D" parent="." unique_id=1375371164]
+position = Vector2(202.5738, 135.24324)
+rotation = 1.5307043
+scale = Vector2(0.24232508, -0.2875681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall13" unique_id=887932742]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall13/CollisionShape2D" unique_id=964995361]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall14" type="StaticBody2D" parent="." unique_id=2056296401]
+position = Vector2(-39.33472, 280.21622)
+rotation = 1.5746458
+scale = Vector2(0.7551151, 0.26451516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall14" unique_id=73047942]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall14/CollisionShape2D" unique_id=2035994566]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall15" type="StaticBody2D" parent="." unique_id=159587008]
+position = Vector2(-45.234924, 44.756752)
+rotation = 3.13465
+scale = Vector2(0.41040373, -0.3894176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall15" unique_id=529288963]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall15/CollisionShape2D" unique_id=594016099]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall16" type="StaticBody2D" parent="." unique_id=464200581]
+position = Vector2(81.619545, 55.45946)
+rotation = -3.137824
+scale = Vector2(-0.034997605, 4.295834)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall16" unique_id=1205646282]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall16/CollisionShape2D" unique_id=1737383642]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall17" type="StaticBody2D" parent="." unique_id=1930281545]
+position = Vector2(77.68608, -60.324326)
+rotation = -1.5640799
+scale = Vector2(-0.041445244, 16.54699)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall17" unique_id=1504488135]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall17/CollisionShape2D" unique_id=1815066465]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall18" type="StaticBody2D" parent="." unique_id=411049498]
+position = Vector2(571.33673, -64.216225)
+rotation = 0.04194335
+scale = Vector2(0.05185085, 2.8577533)
+skew = -0.021084666
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall18" unique_id=1705077664]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall18/CollisionShape2D" unique_id=332918636]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall19" type="StaticBody2D" parent="." unique_id=1911063321]
+position = Vector2(556.58624, 17.513515)
+rotation = -1.5828102
+scale = Vector2(0.040338363, 12.698241)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall19" unique_id=1843369475]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall19/CollisionShape2D" unique_id=2067382364]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall20" type="StaticBody2D" parent="." unique_id=725759328]
+position = Vector2(932.2328, 25.297295)
+rotation = 3.1376622
+scale = Vector2(-0.043369535, 3.0628848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall20" unique_id=627497276]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall20/CollisionShape2D" unique_id=124852774]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall21" type="StaticBody2D" parent="." unique_id=677399148]
+position = Vector2(1029.5864, -67.13514)
+rotation = 3.1328232
+scale = Vector2(-0.042312372, 2.8660536)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall21" unique_id=1530122351]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall21/CollisionShape2D" unique_id=1063727304]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall22" type="StaticBody2D" parent="." unique_id=132470025]
+position = Vector2(823.07916, -64.216225)
+rotation = -3.146021
+scale = Vector2(-0.046594735, 2.8480494)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall22" unique_id=1201233934]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall22/CollisionShape2D" unique_id=693143168]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall23" type="StaticBody2D" parent="." unique_id=1941647955]
+position = Vector2(815.21216, -68.1081)
+rotation = -1.5613031
+scale = Vector2(-0.04298841, 7.1686907)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall23" unique_id=500840843]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall23/CollisionShape2D" unique_id=949934892]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall24" type="StaticBody2D" parent="." unique_id=907369825]
+position = Vector2(946.98346, 130.37839)
+rotation = -0.018266836
+scale = Vector2(0.04330865, 3.92082)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall24" unique_id=1903956144]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall24/CollisionShape2D" unique_id=810261276]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
+
+[node name="MazeWall25" type="StaticBody2D" parent="." unique_id=297989695]
+position = Vector2(938.13306, 251.99995)
+rotation = -1.5733157
+scale = Vector2(0.04330865, 3.92082)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeWall25" unique_id=652206698]
+position = Vector2(-150.88817, 14.751612)
+shape = SubResource("RectangleShape2D_aotxc")
+
+[node name="ColorRect" type="ColorRect" parent="MazeWall25/CollisionShape2D" unique_id=237876671]
+offset_left = -150.0
+offset_top = -15.000008
+offset_right = 150.0
+offset_bottom = 14.999992
+color = Color(1, 0.08235294, 1, 1)
