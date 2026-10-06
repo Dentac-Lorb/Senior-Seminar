@@ -10,13 +10,21 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_orw0w"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6617w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ucwr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3wmw"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twtwk"]
 shader = ExtResource("2_drpss")
 shader_parameter/smoothing = 10.0
-shader_parameter/circleCoords = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/radii = PackedFloat32Array(0, 0, 0, 0, 0)
+shader_parameter/circleCoords = PackedVector2Array(0, 0, 30, 9, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)
+shader_parameter/radii = PackedFloat32Array(50, 50, 0.3, 0.3, 0.3)
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/sandTexture = ExtResource("3_orw0w")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g7414"]
 
 [node name="Node2D" type="Node2D" unique_id=1278756644 node_paths=PackedStringArray("player")]
 script = ExtResource("1_q4a4t")
@@ -31,13 +39,21 @@ shape = SubResource("CircleShape2D_drpss")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=597478994]
 shape = SubResource("CircleShape2D_orw0w")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=940886143]
+shape = SubResource("CircleShape2D_6617w")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=615762538]
+shape = SubResource("CircleShape2D_1ucwr")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=907894242]
+shape = SubResource("CircleShape2D_f3wmw")
+
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=897763484 node_paths=PackedStringArray("player")]
 material = SubResource("ShaderMaterial_twtwk")
-scale = Vector2(-0.24809845, -0.24809845)
-texture = ExtResource("3_orw0w")
+texture = SubResource("PlaceholderTexture2D_g7414")
 script = ExtResource("4_orw0w")
-circles = PackedVector2Array(0, 0, 30, 9, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)
-radii = PackedFloat32Array(50, 50, 0.3, 0.3, 0.3)
+circles = PackedVector2Array(0, 0, 30, 9, -15, 35, 0.5, 0.5, 0.5, 0.5)
+radii = PackedFloat32Array(50, 30, 45, 0.3, 0.3)
 player = NodePath("../../Player")
 
 [node name="Player" parent="." unique_id=612815997 instance=ExtResource("2_4pwpv")]

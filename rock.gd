@@ -19,19 +19,22 @@ func _ready() -> void:
 	var miny = 0
 	var maxx = 0
 	var maxy = 0
-	for circle in circles:
-		minx = min(minx, circle.x)
-		miny = min(minx, circle.y)
-		maxx = max(maxx, circle.x)
-		maxy = max(maxy, circle.y)
+	for i in range(circles.size()):
+		var circle = circles[i]
+		var radius = radii[i]
+		minx = min(minx, circle.x-radius)
+		miny = min(minx, circle.y-radius)
+		maxx = max(maxx, circle.x+radius)
+		maxy = max(maxy, circle.y+radius)
 	
 	position.x = (minx + maxx)/2 
 	position.y = (miny + maxy)/2
 	#self.get_rect().size = Vector2(maxx-minx + 16, maxy-miny + 16)
 	#self.apply_scale()
 	#var texsize = self.texture.get_size() / self.scale
-	self.apply_scale(Vector2(maxx-minx + 16, maxy-miny + 16) / self.get_rect().size)
-	
+	#self.apply_scale(Vector2(maxx-minx + 16, maxy-miny + 16) / self.get_rect().size)
+	var tex: PlaceholderTexture2D = self.texture
+	tex.size = Vector2(maxx-minx + 16, maxy-miny + 16)
 	
 
 
