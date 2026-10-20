@@ -9,6 +9,7 @@ uniform float[circles] radii;
 uniform vec2 offset;
 uniform sampler2D sandTexture: repeat_enable;
 uniform sampler2D normalTexture: repeat_enable;
+uniform float SURFACE_THICKNESS = 0.0001;
 
 global uniform vec3 global_light;
 
@@ -46,6 +47,36 @@ float shadow(vec2 origin, vec2 relative, float radius){
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
+
+
+
+
+float[circles] getDists(vec2 frag){
+	float[circles] dists;
+	float dist = distance(frag.xy, offset + circleCoords[0]) - radii[0];
+	dists[0] = dist;
+	for(int i = 1; i < circles; i++){
+		dists[i] = distance(frag.xy, offset + circleCoords[i]) - radii[i];
+	}
+	return dists;
+}
+
+float getSmoothMinDist(float[circles] dists){
+	float dist = dists[0];
+	for(int i = 1; i < circles; i++){
+		dist = smoothMin(dist, dists[i], smoothing);
+	}
+	return dist;
+}
+// Adapted from raymarching example project: https://github.com/bruce965/godot-raymarching/blob/main/RayMarching.gdshader
+/*vec3 surfaceNormal(vec3 point) {
+	float distanceToSurface = surfaceDistance(point);
+	return normalize(vec3(
+		distanceToSurface - surfaceDistance(vec3(point.x - SURFACE_THICKNESS, point.y, point.z)),
+		distanceToSurface - surfaceDistance(vec3(point.x, point.y - SURFACE_THICKNESS, point.z)),
+		distanceToSurface - surfaceDistance(vec3(point.x, point.y, point.z - SURFACE_THICKNESS))
+	));
+}*/
 
 void fragment() {
 	//float dist = distance(POINT_COORD, circleCoords[0]) - radii[0];
@@ -87,7 +118,7 @@ void fragment() {
 	
 	vec4 sandNorm = texture(normalTexture, (FRAGCOORD.xy + offset)/10.0);
 	
-	NORMAL.rgb = vec3(distortion.rg / radii[trueMinDistIndex] + sandNorm.rg,  -0.5 + 0.5 * tan(asin(trueMinDist / radii[trueMinDistIndex])) * sandNorm.b);
+	NORMAL.rgb = normalize(vec3(distortion.rg / radii[trueMinDistIndex] + sandNorm.rg,  -0.5 + 0.5 * tan(asin(trueMinDist / radii[trueMinDistIndex])) * sandNorm.b));
 }
 
 //void light() {

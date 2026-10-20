@@ -17,7 +17,8 @@ void fragment() {
 	COLOR = samp1 * tint;
 	
 	vec4 noiseSamp3 = texture(noiseTexture, (FRAGCOORD.xy + offset) / 500.0);
-	NORMAL = -noiseSamp3.xyz;
+	NORMAL = normalize(noiseSamp3.xyz);
+	NORMAL.z = 0.5-NORMAL.z;
 }
 
 //void light() {
