@@ -35,7 +35,10 @@ func _ready() -> void:
 	shader.shader = load("res://rock.gdshader")
 	var tex = CompressedTexture2D.new()
 	tex.copy_from_resource(load("res://cc0/dirt2.png"))
+	var norm = CompressedTexture2D.new()
+	norm.copy_from_resource(load("res://cc-by/PagDev/stone_normal.png"))
 	shader.set_shader_parameter("sandTexture", tex)
+	shader.set_shader_parameter("normalTexture", norm)
 	sprite.material = shader
 	
 	self.add_child(sprite)
