@@ -19,6 +19,10 @@ run/main_scene="res://main_test.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LightingGlobals="*uid://wd63ft1a2y8h"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -65,3 +69,10 @@ recenter_camera={
 
 2d/physics_engine="GodotPhysics2D"
 2d/default_gravity=0.0
+
+[shader_globals]
+
+global_light={
+"type": "vec3",
+"value": Vector3(25, 25, 25)
+}

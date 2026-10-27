@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" path="res://main_test.tscn" id="1_yg0fi"]
 [ext_resource type="Script" uid="uid://2cx8el2uwk0x" path="res://portal.gd" id="2_4xk5k"]
 [ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="3_2osp0"]
+[ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="4_yr2eo"]
+[ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="5_857d3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr2eo"]
 
@@ -28,3 +30,10 @@ shape = SubResource("CircleShape2D_yr2eo")
 
 [node name="Sprite2D" type="Sprite2D" parent="Portal" unique_id=1141423443]
 texture = ExtResource("3_2osp0")
+
+[node name="Door" parent="." unique_id=761282455 instance=ExtResource("4_yr2eo")]
+position = Vector2(-954, -402)
+
+[node name="ButtonTrigger" parent="." unique_id=333483667 node_paths=PackedStringArray("target_door") instance=ExtResource("5_857d3")]
+position = Vector2(-253, -232)
+target_door = NodePath("../Door")

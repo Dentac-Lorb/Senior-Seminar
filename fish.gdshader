@@ -15,6 +15,7 @@ uniform vec2[circles] positions;
 uniform float[circles] radii;
 uniform float[4] bounds;
 uniform vec2[6] finPositions;
+uniform vec2 shadowOffset;
 
 
 // Smoothing function from Sebastion Lague
@@ -80,7 +81,19 @@ void fragment() {
 	vec4 finCol = finColor(FRAGCOORD);
 	vec4 bodyCol = bodyColor(FRAGCOORD);
 	
-	COLOR = mix(finCol, bodyCol, bodyCol.a);
+	
+	
+	COLOR.rgb = mix(finCol, bodyCol, bodyCol.a).rgb;
+	COLOR.a = max(finCol.a, bodyCol.a);
+	
+	if(COLOR.a <= 0.25){
+		vec4 finShadow = finColor(FRAGCOORD - vec4(shadowOffset.xy, 0.0, 0.0));
+		vec4 bodyShadow = bodyColor(FRAGCOORD - vec4(shadowOffset.xy, 0.0, 0.0));
+		
+		float shadowAlpha = max(finShadow.a, bodyShadow.a) * 0.25;
+		COLOR.a = shadowAlpha;
+	}
+	
 }
 
 //void light() {

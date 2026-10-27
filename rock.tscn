@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://gif4avonwugs"]
+
+[ext_resource type="Script" uid="uid://drnwjdpasn2ah" path="res://auto_rock.gd" id="1_68h2w"]
+[ext_resource type="Script" uid="uid://dsysm5tq0axi8" path="res://config_warning_suppressor.gd" id="2_46y1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_twtwk"]
+
+[node name="Rock" type="StaticBody2D" unique_id=2128440721]
+script = ExtResource("1_68h2w")
+
+[node name="ConfigWarningSuppressor" type="CollisionShape2D" parent="." unique_id=1272233760]
+shape = SubResource("CircleShape2D_twtwk")
+script = ExtResource("2_46y1q")
+metadata/_custom_type_script = "uid://dsysm5tq0axi8"

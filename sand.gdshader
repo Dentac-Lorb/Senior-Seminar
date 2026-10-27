@@ -15,6 +15,10 @@ void fragment() {
 	vec2 distortion = vec2(noiseSamp1.r - .5, noiseSamp2.r - .5) * 1.0;
 	vec4 samp1 = texture(sandTexture, ((FRAGCOORD.xy + offset) / 400.0) + distortion);
 	COLOR = samp1 * tint;
+	
+	vec4 noiseSamp3 = texture(noiseTexture, (FRAGCOORD.xy + offset) / 500.0);
+	NORMAL = normalize(noiseSamp3.xyz);
+	NORMAL.z = 0.5-NORMAL.z;
 }
 
 //void light() {
