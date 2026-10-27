@@ -28,6 +28,7 @@ shader_parameter/offset = Vector2(0, 0)
 shader_parameter/sandTexture = ExtResource("3_orw0w")
 shader_parameter/normalTexture = ExtResource("4_6617w")
 shader_parameter/SURFACE_THICKNESS = 0.0001
+shader_parameter/occlusionRadius = 10.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g7414"]
 
@@ -72,10 +73,12 @@ radii = PackedFloat32Array(50, 30, 45, 0.3, 0.3)
 player = NodePath("../../Player")
 
 [node name="Player" parent="." unique_id=612815997 instance=ExtResource("2_4pwpv")]
+light_mask = 0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1635931185]
 position = Vector2(4000, 4000)
 rotation = 1.96175
+color = Color(1, 1, 0.6117647, 1)
 shadow_color = Color(0, 0, 0, 0.5019608)
 height = 0.59
 

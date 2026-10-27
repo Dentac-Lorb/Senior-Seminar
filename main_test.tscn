@@ -84,6 +84,7 @@ radius = 21.2132
 metadata/camera = NodePath("fish/Camera2D")
 
 [node name="sand" type="Sprite2D" parent="." unique_id=1218151262 node_paths=PackedStringArray("camera")]
+light_mask = 0
 z_index = -1
 z_as_relative = false
 texture_repeat = 2

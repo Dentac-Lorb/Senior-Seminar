@@ -10,6 +10,7 @@ uniform vec2 offset;
 uniform sampler2D sandTexture: repeat_enable;
 uniform sampler2D normalTexture: repeat_enable;
 uniform float SURFACE_THICKNESS = 0.0001;
+uniform float occlusionRadius = 10.0;
 
 global uniform vec3 global_light;
 
@@ -92,29 +93,46 @@ void fragment() {
 	dists[0] = dist;
 	float trueMinDist = dist;
 	int trueMinDistIndex = 0;
-	for(int i = 1; i < circles; i++){
+	vec2[circles] dirs;
+	float dirDist = 0.0;
+	vec2 distDir = vec2(0.0);
+	int dirCount = 0;
+	for(int i = 0; i < circles; i++){
 		dists[i] = distance(FRAGCOORD.xy, offset + circleCoords[i]) - radii[i];
+		dirs[i] = (circleCoords[i] + offset - FRAGCOORD.xy) / radii[i];
+		if (dists[i] < 0.02){
+			distDir += dirs[i] * dists[i] * dists[i];
+			//dirDist += dists[i];
+			dirCount++;
+		}
 		if (dists[i] < dist){
 			trueMinDist = dists[i];
 			trueMinDistIndex = i;
 		}
-		dist = smoothMin(dist, dists[i], smoothing);
+		if (i != 0) dist = smoothMin(dist, dists[i], smoothing);
 		
 	}
+	
 	float trueMinDistSq = trueMinDist * trueMinDist;
-	vec2 distortionDirection = (circleCoords[trueMinDistIndex] + offset - FRAGCOORD.xy) / radii[trueMinDistIndex]; 
-	vec2 distortion = distortionDirection * trueMinDistSq;
+	vec2 distortionDirection = distDir / float(dirCount); //(circleCoords[trueMinDistIndex] + offset - FRAGCOORD.xy) / radii[trueMinDistIndex]; 
+	vec2 distortion = distortionDirection;// * dirDist * dirDist / float(dirCount * dirCount); //trueMinDistSq;
 	/*vec2(
 		trueMinDistSq * sin(distortionDirection.x),
 		trueMinDistSq * sin(distortionDirection.y)
 	);*/
-	float distortion_magnitude = distance(vec2(0.0), distortionDirection);
-	float darken = 1.0 - distortion_magnitude * distortion_magnitude * .5;
+	//float distortion_magnitude = distance(vec2(0.0), distortionDirection);
+	//float darken = 1.0 - distortion_magnitude * distortion_magnitude * .5;
 	//float shadow = shadow(circleCoords[trueMinDistIndex] + offset, circleCoords[trueMinDistIndex] + offset - FRAGCOORD.xy, radii[trueMinDistIndex]);
+	
+	
 	vec4 sandCol = texture(sandTexture, (FRAGCOORD.xy + offset + distortion)/1000.0);// * darken;// * shadow;
+	vec4 occlusionCol = vec4(0,0,0,0.25);
+	vec4 trueCol = mix(occlusionCol, sandCol, smoothstep(-0.02, 0, -dist));
+	trueCol = mix(vec4(0), trueCol, smoothstep(-occlusionRadius, -0.02, -dist));
 	//COLOR = vec4(sandCol.rgb, smoothstep(-2, 0, -dist));
-	COLOR.rgb = sandCol.rgb;
-	COLOR.a = smoothstep(-0.02, 0, -dist);
+	//COLOR.rgb = sandCol.rgb;
+	//COLOR.a = smoothstep(-0.02, 0, -dist);
+	COLOR = trueCol;
 	
 	vec4 sandNorm = texture(normalTexture, (FRAGCOORD.xy + offset)/10.0);
 	
