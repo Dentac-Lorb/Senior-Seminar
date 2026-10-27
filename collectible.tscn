@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bl26a0kdap1ui"]
+
+[ext_resource type="Script" uid="uid://cs427jm3ppys6" path="res://collectible.gd" id="1_rd2yi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjhhh"]
+radius = 15.0
+
+[node name="Collectible" type="Area2D" unique_id=314747746]
+script = ExtResource("1_rd2yi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=600895275]
+shape = SubResource("CircleShape2D_vjhhh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2058953591]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+color = Color(0.23786032, 0.30735672, 1, 1)

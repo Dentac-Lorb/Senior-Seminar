@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="1_4xiey"]
 [ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="2_5i6fs"]
 [ext_resource type="PackedScene" uid="uid://0a2hoavfwmyr" path="res://main_test.tscn" id="3_n605e"]
+[ext_resource type="PackedScene" uid="uid://da2ye6n1nrjda" path="res://hud.tscn" id="4_n605e"]
+[ext_resource type="PackedScene" uid="uid://bl26a0kdap1ui" path="res://collectible.tscn" id="5_2pls3"]
 
 [node name="ButtonDoorTest" type="Node2D" unique_id=1261303803]
 
@@ -18,3 +20,8 @@ channel = 4294967265
 z_index = 2
 position = Vector2(200, -15)
 channel = 4294967265
+
+[node name="HUD" parent="." unique_id=875934632 instance=ExtResource("4_n605e")]
+
+[node name="Collectible" parent="." unique_id=314747746 instance=ExtResource("5_2pls3")]
+position = Vector2(-114, -106)
