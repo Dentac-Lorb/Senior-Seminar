@@ -6,6 +6,7 @@ class_name Door
 
 @onready var collision_shape:CollisionShape2D = $CollisionShape2D
 @onready var color_rect: ColorRect = $ColorRect
+@export var sources: Array[Node]
 
 var is_active: bool = false
 
@@ -13,6 +14,15 @@ func _ready() -> void:
 	# Add this door to the global "doors" group
 	add_to_group("doors")
 	deactivate() # Start in closed / solid state
+	for source in sources:
+		if source.has_signal("update_targets"):
+			source.connect("update_targets", update)
+		#source_inputs[source] = source.default_output() if source.has_method("default_output") else 0
+
+func update(node: Node, channel_mask: int, state: bool):
+	if channel_mask & channel != 0:
+		activate()
+	else: deactivate()
 
 func activate() -> void:
 	is_active = true

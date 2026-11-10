@@ -3,9 +3,13 @@ class_name ButtonTrigger
 
 # Default to -1(All Channels). @export_flags gives checkboxes in the Inspector!
 @export_flags("Channel 1", "Channel 2", "Channel 3", "Channel 4", "Channel 5") var channel : int = -1
+#@export var connections: Array[Node]
+@export var lock: bool
 @onready var color_rect: ColorRect = $ColorRect
 
 var active_bodies: Array[Node2D] = []
+
+signal update_targets(node: Node, channel_mask: int, state: bool)
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -24,14 +28,12 @@ func _on_body_exited(body: Node2D) -> void:
 		color_rect.color = Color.RED
 		broadcast_state(false)
 		
+
+		
 func broadcast_state(activate_doors: bool) -> void:
-	var doors = get_tree().get_nodes_in_group("doors")
-	for door in doors:
-		if door.has_method("matches_channel") and door.matches_channel(channel):
-			if activate_doors:
-				door.activate()
-			else:
-				door.deactivate()
+	if activate_doors or not lock:
+		update_targets.emit(self, channel if activate_doors else 0, activate_doors)
+		
 	
 		
 
