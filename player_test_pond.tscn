@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ct8rf3kdx3ahx" path="res://cc-by/PagDev/stone_normal.png" id="4_6617w"]
 [ext_resource type="Script" uid="uid://bjujkg2w8v4qd" path="res://rock.gd" id="4_orw0w"]
 [ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="8_1ucwr"]
+[ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="9_g7414"]
+[ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="10_01pkn"]
+[ext_resource type="Script" uid="uid://cig143q2bmdlh" path="res://logic_gate.gd" id="11_cf1eo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drpss"]
 
@@ -91,3 +94,21 @@ texture = ExtResource("8_1ucwr")
 visible = false
 position = Vector2(-294, 52)
 occluder = SubResource("OccluderPolygon2D_f3wmw")
+
+[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources") instance=ExtResource("9_g7414")]
+position = Vector2(349, -15)
+channel = 4294967265
+sources = [NodePath("../LogicGate")]
+
+[node name="ButtonTrigger" parent="." unique_id=333483667 instance=ExtResource("10_01pkn")]
+position = Vector2(237, -267)
+lock = true
+
+[node name="ButtonTrigger2" parent="." unique_id=772348038 instance=ExtResource("10_01pkn")]
+position = Vector2(239, 237)
+
+[node name="LogicGate" type="Node" parent="." unique_id=1002890494 node_paths=PackedStringArray("sources")]
+script = ExtResource("11_cf1eo")
+sources = [NodePath("../ButtonTrigger"), NodePath("../ButtonTrigger2")]
+gate = "AND"
+metadata/_custom_type_script = "uid://cig143q2bmdlh"

@@ -19,21 +19,23 @@ func _ready() -> void:
 
 func update(node: Node, channel_mask: int, state: bool):
 	source_inputs[node] = channel_mask
-	var state_out = -1 if state else 0
+	var state_out: int = -1 if state else 0
+	#print(source_inputs.values())
+	#print(source_inputs.values()[0] & source_inputs.values()[1])
 	match(gate):
 		"AND":
-			state_out = source_inputs.values().reduce(func(a: int, b: int): a & b, -1)
+			state_out = source_inputs.values().reduce(func(a: int, b: int): return a & b, -1)
 		"OR":
-			state_out = source_inputs.values().reduce(func(a: int, b: int): a | b, 0)
+			state_out = source_inputs.values().reduce(func(a: int, b: int): return a | b, 0)
 		"NAND":
-			state_out = source_inputs.values().reduce(func(a: int, b: int): ~(a & b), 0)
+			state_out = source_inputs.values().reduce(func(a: int, b: int): return ~(a & b), 0)
 		"NOR":
-			state_out = source_inputs.values().reduce(func(a: int, b: int): ~(a | b), 0)
+			state_out = source_inputs.values().reduce(func(a: int, b: int): return ~(a | b), 0)
 		"XOR":
-			state_out = source_inputs.values().reduce(func(a: int, b: int): a ^ b, 0)
+			state_out = source_inputs.values().reduce(func(a: int, b: int): return a ^ b, 0)
 		"NOT":
 			state_out = ~channel_mask
-			
+	#print(state_out)
 	update_targets.emit(self, state_out, state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
