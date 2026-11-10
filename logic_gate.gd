@@ -2,7 +2,7 @@ extends Node
 class_name LogicGate
 
 @export var sources: Array[Node]
-@export var targets: Array[Node]
+#@export var targets: Array[Node]
 @export_enum("AND", "OR", "NAND", "NOR", "XOR", "NOT") var gate: String
 var source_inputs: Dictionary = {}
 
