@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="8_1ucwr"]
 [ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="9_g7414"]
 [ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="10_01pkn"]
+[ext_resource type="Script" uid="uid://df36sxrwip16j" path="res://light_button.gd" id="11_01pkn"]
 [ext_resource type="Script" uid="uid://cig143q2bmdlh" path="res://logic_gate.gd" id="11_cf1eo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drpss"]
@@ -104,8 +105,22 @@ sources = [NodePath("../LogicGate")]
 position = Vector2(237, -267)
 lock = true
 
+[node name="IndicatorLight" type="ColorRect" parent="ButtonTrigger" unique_id=261626396 node_paths=PackedStringArray("player")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_01pkn")
+player = NodePath("../../Player")
+metadata/_custom_type_script = "uid://df36sxrwip16j"
+
 [node name="ButtonTrigger2" parent="." unique_id=772348038 instance=ExtResource("10_01pkn")]
 position = Vector2(239, 237)
+
+[node name="IndicatorLight" type="ColorRect" parent="ButtonTrigger2" unique_id=1581219783 node_paths=PackedStringArray("player")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_01pkn")
+player = NodePath("../../Player")
+metadata/_custom_type_script = "uid://df36sxrwip16j"
 
 [node name="LogicGate" type="Node" parent="." unique_id=1002890494 node_paths=PackedStringArray("sources")]
 script = ExtResource("11_cf1eo")

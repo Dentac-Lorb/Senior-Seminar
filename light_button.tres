@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bcnyn676ssas7"]
+
+[ext_resource type="Shader" uid="uid://cmu6ampf4jixa" path="res://light_button.gdshader" id="1_xl6vv"]
+
+[resource]
+shader = ExtResource("1_xl6vv")
+shader_parameter/center = Vector2(0, 0)
+shader_parameter/color = Vector4(0, 0, 0, 0)
