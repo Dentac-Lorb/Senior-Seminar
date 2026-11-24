@@ -6,6 +6,7 @@ class_name HUD
 var current_score: int = 0
 
 func _ready() -> void:
+	add_to_group("hud")
 	update_ui()
 	
 func add_score(amount: int) -> void:
