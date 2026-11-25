@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b84pvicoqcjj3" path="res://icon.svg" id="8_1ucwr"]
 [ext_resource type="PackedScene" uid="uid://bjnsjhoux7l7v" path="res://door.tscn" id="9_g7414"]
 [ext_resource type="PackedScene" uid="uid://d0pl6o6womgji" path="res://button_trigger.tscn" id="10_01pkn"]
+[ext_resource type="Script" uid="uid://b0vyp5s4tlqs" path="res://shader_door.gd" id="10_cf1eo"]
 [ext_resource type="Script" uid="uid://df36sxrwip16j" path="res://light_button.gd" id="11_01pkn"]
 [ext_resource type="Script" uid="uid://cig143q2bmdlh" path="res://logic_gate.gd" id="11_cf1eo"]
 
@@ -96,8 +97,23 @@ visible = false
 position = Vector2(-294, 52)
 occluder = SubResource("OccluderPolygon2D_f3wmw")
 
-[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources", "reset_on_cross") instance=ExtResource("9_g7414")]
+[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("player", "sources", "reset_on_cross") instance=ExtResource("9_g7414")]
 position = Vector2(349, -15)
+script = ExtResource("10_cf1eo")
+thickness = 15
+open_speed = 1.0
+player = NodePath("../Player")
+channel = 4294967265
+sources = [NodePath("../LogicGate")]
+reset_on_cross = [NodePath("../ButtonTrigger")]
+
+[node name="Door2" parent="." unique_id=1680566142 node_paths=PackedStringArray("player", "sources", "reset_on_cross") instance=ExtResource("9_g7414")]
+position = Vector2(450, 203)
+rotation = 0.6669249
+script = ExtResource("10_cf1eo")
+thickness = 15
+open_speed = 1.0
+player = NodePath("../Player")
 channel = 4294967265
 sources = [NodePath("../LogicGate")]
 reset_on_cross = [NodePath("../ButtonTrigger")]
