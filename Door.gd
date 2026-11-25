@@ -58,9 +58,13 @@ func matches_channel(trigger_channel: int) -> bool:
 	return (channel & trigger_channel) != 0
 
 func _on_pass_through_entered(body: Node) -> void:
+	if body == self:
+		return
 	active_bodies.append(body)
 	
 func _on_pass_through_exited(body: Node) -> void:
+	if body == self:
+		return
 	active_bodies.erase(body)
 	if is_active and active_bodies.is_empty():
 		#deactivate()
