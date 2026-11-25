@@ -63,7 +63,7 @@ func _on_pass_through_entered(body: Node) -> void:
 func _on_pass_through_exited(body: Node) -> void:
 	active_bodies.erase(body)
 	if is_active and active_bodies.is_empty():
-		deactivate()
+		#deactivate()
 		for logic_source in reset_on_cross:
 			if logic_source.has_method("reset"):
 				logic_source.reset()
