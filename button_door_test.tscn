@@ -6,32 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://da2ye6n1nrjda" path="res://hud.tscn" id="4_n605e"]
 [ext_resource type="PackedScene" uid="uid://bl26a0kdap1ui" path="res://collectible.tscn" id="5_2pls3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8aii"]
-size = Vector2(22, 24)
-
 [node name="ButtonDoorTest" type="Node2D" unique_id=1261303803]
-position = Vector2(171, 183)
 
 [node name="Node2D" parent="." unique_id=612815997 instance=ExtResource("3_n605e")]
 position = Vector2(-3, -21)
 
-[node name="ButtonTrigger" parent="." unique_id=333483667 node_paths=PackedStringArray("door") instance=ExtResource("1_4xiey")]
+[node name="ButtonTrigger" parent="." unique_id=333483667 instance=ExtResource("1_4xiey")]
 z_index = 2
-position = Vector2(-116, 61)
-door = NodePath("../Door")
+position = Vector2(-200, 0)
+channel = 4294967265
+lock = true
 
-[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("linked_button") instance=ExtResource("2_5i6fs")]
+[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources", "reset_on_cross") instance=ExtResource("2_5i6fs")]
 z_index = 2
-position = Vector2(182, -20)
-linked_button = NodePath("../ButtonTrigger")
-
-[node name="PassThroughArea" type="Area2D" parent="Door" unique_id=1971238397]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PassThroughArea" unique_id=2058099107]
-position = Vector2(93, 1)
-shape = SubResource("RectangleShape2D_h8aii")
+position = Vector2(200, -15)
+channel = 4294967265
+sources = [NodePath("../ButtonTrigger")]
+reset_on_cross = [NodePath("../ButtonTrigger")]
 
 [node name="HUD" parent="." unique_id=875934632 instance=ExtResource("4_n605e")]
 
 [node name="Collectible" parent="." unique_id=314747746 instance=ExtResource("5_2pls3")]
-position = Vector2(-7, -104)
+position = Vector2(-114, -106)

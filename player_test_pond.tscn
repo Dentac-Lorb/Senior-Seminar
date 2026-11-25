@@ -96,14 +96,14 @@ visible = false
 position = Vector2(-294, 52)
 occluder = SubResource("OccluderPolygon2D_f3wmw")
 
-[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources") instance=ExtResource("9_g7414")]
+[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources", "reset_on_cross") instance=ExtResource("9_g7414")]
 position = Vector2(349, -15)
 channel = 4294967265
 sources = [NodePath("../LogicGate")]
+reset_on_cross = [NodePath("../ButtonTrigger")]
 
 [node name="ButtonTrigger" parent="." unique_id=333483667 instance=ExtResource("10_01pkn")]
 position = Vector2(237, -267)
-lock = true
 
 [node name="IndicatorLight" type="ColorRect" parent="ButtonTrigger" unique_id=261626396 node_paths=PackedStringArray("player")]
 offset_right = 40.0
