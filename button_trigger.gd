@@ -4,7 +4,7 @@ class_name ButtonTrigger
 # Default to -1(All Channels). @export_flags gives checkboxes in the Inspector!
 @export_flags("Channel 1", "Channel 2", "Channel 3", "Channel 4", "Channel 5") var channel : int = -1
 #@export var connections: Array[Node]
-@export var lock: bool
+@export var lock: bool = true
 @onready var color_rect: ColorRect = $ColorRect
 
 var active_bodies: Array[Node2D] = []
@@ -36,5 +36,7 @@ func broadcast_state(activate_doors: bool) -> void:
 		
 	
 		
-
+func reset():
+	if lock:
+		update_targets.emit(self, 0, false)
 	

@@ -17,11 +17,12 @@ position = Vector2(-200, 0)
 channel = 4294967265
 lock = true
 
-[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources") instance=ExtResource("2_5i6fs")]
+[node name="Door" parent="." unique_id=761282455 node_paths=PackedStringArray("sources", "reset_on_cross") instance=ExtResource("2_5i6fs")]
 z_index = 2
 position = Vector2(200, -15)
 channel = 4294967265
 sources = [NodePath("../ButtonTrigger")]
+reset_on_cross = [NodePath("../ButtonTrigger")]
 
 [node name="HUD" parent="." unique_id=875934632 instance=ExtResource("4_n605e")]
 
